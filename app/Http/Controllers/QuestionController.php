@@ -11,6 +11,12 @@ class QuestionController extends Controller
         
         $questions = Question::all();
 
+        if(count($questions) == 0){
+            return response([
+                'error' => 'No Questions found',
+            ], 400);    
+        }
+
         return response([
             'questions' => $questions,
             'message' => 'Got all questions successfully',

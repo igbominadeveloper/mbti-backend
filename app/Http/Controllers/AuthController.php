@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\ResponseInterface;
-use App\Models\Response;
 use App\Http\Requests\AuthLoginRequest;
 
 class AuthController extends Controller {
@@ -19,7 +18,8 @@ class AuthController extends Controller {
             'email' => 'required|email'
         ]);
 
-        $userResponse = Response::where('email', $request->email)->first();
+        $userResponse = $responseService->getUserResponse($request->email);
+
 
         if(!$userResponse){
             return response([
