@@ -40,5 +40,9 @@ $ docker-compose ps
 
 ```
 
-
 Your app should be running on [localhost](0.0.0.0:8000)
+
+Test that you can access `http://localhost:8000/api/v1/questions`
+
+
+This App is setup to use sqlite databse so there is no need to migrate the database
