@@ -14,5 +14,6 @@ class QuestionController extends Controller
         return response([
             'questions' => $questions,
             'message' => 'Got all questions successfully',
-        ], 200);    }
+        ], 200);    
+    }
 }

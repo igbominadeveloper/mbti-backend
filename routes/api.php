@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::get('questions', 'QuestionController@all');
+    Route::post('responses', 'ResponseController@store');
 });

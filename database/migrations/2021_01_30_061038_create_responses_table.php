@@ -15,7 +15,7 @@ class CreateResponsesTable extends Migration
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
-            $table->string('email', 256);
+            $table->string('email', 256)->unique();
             $table->enum('ei-1', [1,2,3,4,5,6,7]);
             $table->enum('ei-2', [1,2,3,4,5,6,7]);
             $table->enum('ei-3', [1,2,3,4,5,6,7]);
