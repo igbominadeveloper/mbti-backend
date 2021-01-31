@@ -12,30 +12,33 @@
 
 ## Technologies
 
--   Laravel
+Laravel
 
-## Project setup
+===================================================
 
-```
-composer install
-```
+## How to setup
 
-### Migrate the Database
+===================================================
 
-You can change the database you want to use with it. default is the sqlite
+Confirm that you have docker installed
 
 ```
-php artisan migrate
-```
-
-### Seed the Database with the questions
+$ docker --version
 
 ```
-php artisan db:seed
+
+
+Pull and Build docker containers
+```
+$ docker-compose up -d 
 ```
 
-### Start the application
+Confirm that all containers are up and running
 
 ```
-php artisan serve
+$ docker-compose ps
+
 ```
+
+
+Your app should be running on [localhost](0.0.0.0:8000)
