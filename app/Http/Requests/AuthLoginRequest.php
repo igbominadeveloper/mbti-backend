@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ResponseRequest extends FormRequest
+class AuthLoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,16 +27,6 @@ class ResponseRequest extends FormRequest
     {
         return [
             'email' => 'bail|required|email',
-            'ei-1' => 'bail|required|integer|min:1|max:7', 
-            'ei-2' => 'bail|required|integer|min:1|max:7', 
-            'ei-3' => 'bail|required|integer|min:1|max:7', 
-            'sn-1' => 'bail|required|integer|min:1|max:7', 
-            'sn-2' => 'bail|required|integer|min:1|max:7', 
-            'tf-1' => 'bail|required|integer|min:1|max:7', 
-            'tf-2' => 'bail|required|integer|min:1|max:7', 
-            'jp-1' => 'bail|required|integer|min:1|max:7', 
-            'jp-2' => 'bail|required|integer|min:1|max:7', 
-            'jp-3' => 'bail|required|integer|min:1|max:7', 
         ];
     }
 
