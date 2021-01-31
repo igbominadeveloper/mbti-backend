@@ -10,26 +10,25 @@ use App\Interfaces\ResponseInterface;
 
 class ResponseController extends Controller
 {
+    public function __construct(ResponseInterface $responseService){
+        $this->responseService = $responseService;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\ResponseRequest  $request
-     * @param  \App\Interface\ResponseInterface  $responseService
      * @return \Illuminate\Http\Response
      */
-    public function store(ResponseRequest $request, ResponseInterface $responseService)
+    public function store(ResponseRequest $request)
     {
         $userResponse = $request->validated();
         $email = $userResponse['email'];
 
-        $mbti = $responseService->calculateMbti($userResponse);
-        
-        ResponseModel::upsert(
-            [$userResponse],
-            ['email'],
-            ['ei-1', 'ei-2', 'ei-3', 'sn-1', 'sn-2', 'tf-1', 'tf-2', 'jp-1', 'jp-2', 'jp-3']
-        );
+        $mbti = $this->responseService->calculateMbti($userResponse);
 
+        $this->responseService->recordResponse($userResponse);
+        
         return response([
             'mbti' => $mbti,
         ], 201);
@@ -42,9 +41,25 @@ class ResponseController extends Controller
      * @param  \App\Models\Response $response
      * @return \Illuminate\Http\Response
      */
-    public function show(ResponseModel $response)
-    {
-        
+    public function show(Request $request) {
+        $email = $request->query('email');
+
+        $userResponse = $this->responseService->getUserResponse($email);
+
+        if(!$userResponse) {
+            return response([
+                'error' => 'Record Not Found!!!'
+            ], 404);    
+        }
+
+        unset($userResponse['id']);
+        unset($userResponse['created_at']);
+        unset($userResponse['updated_at']);
+
+
+          return response([
+            'response' => $userResponse,
+        ], 201);
     }
    
 }

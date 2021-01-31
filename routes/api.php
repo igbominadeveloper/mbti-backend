@@ -18,4 +18,5 @@ Route::prefix('v1')->group(function () {
     Route::get('questions', 'QuestionController@all');
     Route::post('responses', 'ResponseController@store');
     Route::post('login', 'AuthController@login');
+    Route::get('response', 'ResponseController@show');
 });

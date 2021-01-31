@@ -2,8 +2,21 @@
 namespace App\Services;
 
 use App\Interfaces\ResponseInterface;
+use App\Models\Response;
 
 class ResponseService implements ResponseInterface {
+
+    public function recordResponse($userResponse) {
+        Response::upsert(
+            [$userResponse],
+            ['email'],
+            ['ei-1', 'ei-2', 'ei-3', 'sn-1', 'sn-2', 'tf-1', 'tf-2', 'jp-1', 'jp-2', 'jp-3']
+        );
+    }
+
+    public function getUserResponse($email) {
+        return Response::where('email', $email)->first();
+    }
     
     public function calculateMbti($userResponse){
         $eiScore = 0;
