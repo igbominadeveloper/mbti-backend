@@ -30,7 +30,7 @@ $ docker --version
 Create a .env file and copy the .env.example file into it
 
 ```
-$ nano .env
+$ touch .env
 ```
 
 ```
