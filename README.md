@@ -27,10 +27,20 @@ $ docker --version
 
 ```
 
+Create a .env file and copy the .env.example file into it
+
+```
+$ nano .env
+```
+
+```
+$ cp .env.example .env
+```
 
 Pull and Build docker containers
+
 ```
-$ docker-compose up -d 
+$ docker-compose up -d
 ```
 
 Confirm that all containers are up and running
@@ -39,6 +49,5 @@ Confirm that all containers are up and running
 $ docker-compose ps
 
 ```
-
 
 Your app should be running on [localhost](0.0.0.0:8000)
