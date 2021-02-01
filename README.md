@@ -27,10 +27,20 @@ $ docker --version
 
 ```
 
+Create a .env file and copy the .env.example file into it
+
+```
+$ nano .env
+```
+
+```
+$ cp .env.example .env
+```
 
 Pull and Build docker containers
+
 ```
-$ docker-compose up -d 
+$ docker-compose up -d
 ```
 
 Confirm that all containers are up and running
